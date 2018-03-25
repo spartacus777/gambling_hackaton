@@ -4,10 +4,13 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import app.gluten.free.gamblinghackaton.spinner.RouletteActivity;
@@ -18,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnRoulette, btnSlot, btnShop, btnSettings;
     MediaPlayer mpSound;
 
+    private ViewGroup parent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         btnSlot = (Button)findViewById(R.id.btnSlot);
         btnShop = (Button)findViewById(R.id.btnShop);
         btnSettings = (Button)findViewById(R.id.btnSettings);
+        parent = (ViewGroup) findViewById(R.id.parent);
 
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(slot);
             }
         });
+
+        GradientDrawable gd = new GradientDrawable(
+                GradientDrawable.Orientation.TOP_BOTTOM,
+                new int[] {Color.parseColor("#ED66FF"), Color.parseColor("#717BFF")});
+        gd.setCornerRadius(0f);
+        parent.setBackground(gd);
     }
 
     private void createNotification(){
