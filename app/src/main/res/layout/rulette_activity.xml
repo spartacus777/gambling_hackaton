@@ -124,7 +124,7 @@
         android:background="@drawable/cool_btn"
         android:paddingRight="16dp"
         android:paddingLeft="16dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginTop="6dp"
         tools:text="Install"
         android:text="To shop"
