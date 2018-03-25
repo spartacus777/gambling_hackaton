@@ -20,6 +20,12 @@
         <activity android:name=".SlotActivity">
         </activity>
 
+        <activity android:name=".SettingsActivity">
+        </activity>
+
+        <activity android:name=".ShopActivity">
+        </activity>
+
     </application>
 
 

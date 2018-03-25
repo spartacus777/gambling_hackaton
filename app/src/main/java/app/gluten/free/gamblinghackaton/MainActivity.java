@@ -14,7 +14,7 @@ import app.gluten.free.recievers.NotificationReciever;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnRoulette, btnSlot, btnShop;
+    private Button btnRoulette, btnSlot, btnShop, btnSettings;
     MediaPlayer mpSound;
 
     @Override
@@ -25,7 +25,14 @@ public class MainActivity extends AppCompatActivity {
         btnRoulette = (Button)findViewById(R.id.btnRoulette);
         btnSlot = (Button)findViewById(R.id.btnSlot);
         btnShop = (Button)findViewById(R.id.btnShop);
+        btnSettings = (Button)findViewById(R.id.btnSettings);
 
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         btnSlot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(slot);
             }
         });
+        createNotification();
     }
 
     private void createNotification(){
