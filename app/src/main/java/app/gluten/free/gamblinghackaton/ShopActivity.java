@@ -18,6 +18,7 @@ import app.gluten.free.gamblinghackaton.shop.Product;
 import app.gluten.free.gamblinghackaton.shop.ShopAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by K-Android 001 on 3/25/2018.
@@ -99,6 +100,11 @@ public class ShopActivity extends AppCompatActivity {
         };
 
         return p1;
+    }
+
+    @OnClick(R.id.back)
+    public void onclickback(){
+        onBackPressed();
     }
 
     private Product createProd2(){

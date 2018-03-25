@@ -23,18 +23,13 @@ import app.gluten.free.gamblinghackaton.ShopActivity;
 import app.gluten.free.gamblinghackaton.helper.UIHelper;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class RouletteActivity extends BaseActivity implements IndicatorView.OnIndicatorInterection,
         NoSpinDialogHelper.NoSpinClickListener {
 
     @BindView(R.id.btnBuy)
     protected Button btnBuy;
-
-    @BindView(R.id.abCurBet)
-    protected TextView abCurBet;
-
-    @BindView(R.id.abName)
-    protected TextView abName;
 
     @BindView(R.id.rouletteView)
     protected ImageView rouletteView;
@@ -62,19 +57,36 @@ public class RouletteActivity extends BaseActivity implements IndicatorView.OnIn
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rulette_activity);
+        getSupportActionBar().hide();
+
         ButterKnife.bind(this);
 
         init();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateBalanceAndSpins(true);
+    }
+
+    @OnClick(R.id.btnBuy)
+    public void onkjsdfbjknfrfj(){
+        Intent shop = new Intent(RouletteActivity.this, ShopActivity.class);
+        RouletteActivity.this.startActivity(shop);
+    }
+
+
+    @OnClick(R.id.back)
+    public void onclickback(){
+        onBackPressed();
+    }
+
     private void setReward(){
-        abCurBet.setText("Your bet - 1 Spin");
     }
 
     private void init(){
         setReward();
-
-        btnBuy.setText("Buy spin");
 
         spinLogic = new SpinLogic();
 

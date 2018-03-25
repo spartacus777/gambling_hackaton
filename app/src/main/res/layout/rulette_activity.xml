@@ -6,39 +6,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/abActionBar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:layout_gravity="center_vertical"
-        android:background="@color/colorPrimary"
+        android:background="@color/white"
         android:elevation="2dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
 
-        <TextView
-            android:id="@+id/abName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/ab_name_marginleft_mainactivity"
-            android:layout_weight="1"
-            android:text="Roulette"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp20" />
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/ic_arrow_back_black_36dp"/>
 
-        <TextView
-            android:id="@+id/abCurBet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="@dimen/ab_name_marginleft_mainactivity"
-            android:text="Free spins: #1"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp20" />
+        <Button
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/settings"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -129,11 +121,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:id="@+id/btnBuy"
+        android:background="@drawable/cool_btn"
         android:paddingRight="16dp"
         android:paddingLeft="16dp"
         android:layout_marginBottom="6dp"
         android:layout_marginTop="6dp"
         tools:text="Install"
+        android:text="To shop"
         android:textColor="@android:color/white"
         android:textSize="14sp"
         android:textStyle="bold" />
