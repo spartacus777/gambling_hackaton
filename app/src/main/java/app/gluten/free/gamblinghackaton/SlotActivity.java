@@ -1,10 +1,13 @@
 package app.gluten.free.gamblinghackaton;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +22,7 @@ import java.util.Random;
 
 import app.gluten.free.gamblinghackaton.spinner.RouletteActivity;
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by K-Android 001 on 3/25/2018.
@@ -26,7 +30,7 @@ import butterknife.BindView;
 
 public class SlotActivity extends AppCompatActivity {
 
-    private ImageView img1, img2, img3;
+    private ImageView img1, img2, img3, btnBack;
     private Wheel wheel1, wheel2, wheel3;
     private Button btn, btnSound, btnShop;
     private boolean isStarted;
@@ -51,7 +55,21 @@ public class SlotActivity extends AppCompatActivity {
         btn = (Button) findViewById(R.id.btn);
         btnSound = (Button) findViewById(R.id.btnSound);
         btnShop = (Button) findViewById(R.id.btnShop);
+        btnBack = (ImageView) findViewById(R.id.back);
         textSwitcher = (TextSwitcher)findViewById(R.id.text_switcher);
+
+        final SharedPreferences storage = PreferenceManager.getDefaultSharedPreferences(App.getContext());
+        if(storage.getBoolean("isSoundOn", true))
+            btnSound.setBackgroundResource(R.drawable.sound_on);
+        else
+            btnSound.setBackgroundResource(R.drawable.sound_off);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         btnSound.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -217,7 +235,11 @@ public class SlotActivity extends AppCompatActivity {
         super.onStart();
         mpSound = MediaPlayer.create(this, R.raw.slot_music);
         mpSound.setLooping(true);
-        mpSound.setVolume(1, 1);
+        final SharedPreferences storage = PreferenceManager.getDefaultSharedPreferences(App.getContext());
+        if(storage.getBoolean("isSoundOn", true))
+            mpSound.setVolume(1, 1);
+        else
+            mpSound.setVolume(0,0);
         mpSound.start();
     }
 

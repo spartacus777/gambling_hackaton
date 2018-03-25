@@ -2,8 +2,11 @@ package app.gluten.free.gamblinghackaton.spinner;
 
 import android.animation.Animator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -52,6 +55,7 @@ public class RouletteActivity extends BaseActivity implements IndicatorView.OnIn
     private SpinLogic spinLogic;
 
     private double reward = 1;
+    MediaPlayer mpSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -280,6 +284,28 @@ public class RouletteActivity extends BaseActivity implements IndicatorView.OnIn
     public void onBuyClicked() {
         Intent shop = new Intent(RouletteActivity.this, ShopActivity.class);
         RouletteActivity.this.startActivity(shop);
+    }
+
+
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mpSound = MediaPlayer.create(this, R.raw.roulette_music);
+        mpSound.setLooping(true);
+        final SharedPreferences storage = PreferenceManager.getDefaultSharedPreferences(App.getContext());
+        if(storage.getBoolean("isSoundOn", true))
+            mpSound.setVolume(1, 1);
+        else
+            mpSound.setVolume(0,0);
+        mpSound.start();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mpSound.release();
     }
 }
 

@@ -1,7 +1,10 @@
 package app.gluten.free.gamblinghackaton;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -33,6 +36,8 @@ public class ShopActivity extends AppCompatActivity {
 
     @BindView(R.id.text_switcher)
     protected TextSwitcher textSwitcher;
+
+    MediaPlayer mpSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,5 +160,25 @@ public class ShopActivity extends AppCompatActivity {
         return p1;
     }
 
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mpSound = MediaPlayer.create(this, R.raw.menu_music);
+        mpSound.setLooping(true);
+        final SharedPreferences storage = PreferenceManager.getDefaultSharedPreferences(App.getContext());
+        if(storage.getBoolean("isSoundOn", true))
+            mpSound.setVolume(1, 1);
+        else
+            mpSound.setVolume(0,0);
+        mpSound.start();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mpSound.release();
+    }
 
 }

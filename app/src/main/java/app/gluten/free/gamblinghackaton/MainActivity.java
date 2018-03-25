@@ -4,7 +4,9 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -76,7 +78,11 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         mpSound = MediaPlayer.create(this, R.raw.menu_music);
         mpSound.setLooping(true);
-        mpSound.setVolume(1, 1);
+        final SharedPreferences storage = PreferenceManager.getDefaultSharedPreferences(App.getContext());
+        if(storage.getBoolean("isSoundOn", true))
+            mpSound.setVolume(1, 1);
+        else
+            mpSound.setVolume(0,0);
         mpSound.start();
     }
 

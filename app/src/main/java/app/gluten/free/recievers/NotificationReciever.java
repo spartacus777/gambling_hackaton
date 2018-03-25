@@ -3,7 +3,10 @@ package app.gluten.free.recievers;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
+import app.gluten.free.gamblinghackaton.App;
 import app.gluten.free.services.NotificationIntentService;
 
 /**
@@ -20,7 +23,11 @@ public class NotificationReciever extends BroadcastReceiver {
             popNotification(context);
     }
     private void popNotification(Context context){
-        Intent intent1 = new Intent(context, NotificationIntentService.class);
-        context.startService(intent1);
+
+        final SharedPreferences storage = PreferenceManager.getDefaultSharedPreferences(App.getContext());
+        if(storage.getBoolean("isNotificationsOn", true)) {
+            Intent intent1 = new Intent(context, NotificationIntentService.class);
+            context.startService(intent1);
+        }
     }
 }
