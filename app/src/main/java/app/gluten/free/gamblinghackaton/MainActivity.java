@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import app.gluten.free.gamblinghackaton.spinner.RouletteActivity;
 import app.gluten.free.recievers.NotificationReciever;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,6 +52,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         createNotification();
+
+        btnRoulette.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent slot = new Intent(MainActivity.this, RouletteActivity.class);
+                MainActivity.this.startActivity(slot);
+            }
+        });
     }
 
     private void createNotification(){

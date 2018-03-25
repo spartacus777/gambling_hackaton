@@ -18,6 +18,8 @@ public class User {
 
     public int rouletteRollsNoWinsCount = 0;
 
+//    public boolean buyX1 = false;
+
     public void save() {
         final SharedPreferences.Editor storage = PreferenceManager.getDefaultSharedPreferences(App.getContext()).edit();
         storage.putInt(BALANCE, balanceSpins);
