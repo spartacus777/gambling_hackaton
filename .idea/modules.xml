@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\K-Android 001\Desktop\Hackaton\gambling_hackaton\GamblingHackaton.iml" filepath="C:\Users\K-Android 001\Desktop\Hackaton\gambling_hackaton\GamblingHackaton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GamblingHackaton.iml" filepath="$PROJECT_DIR$/GamblingHackaton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../K-Android 001/Desktop/Hackaton/gambling_hackaton/GamblingHackaton.iml" filepath="$PROJECT_DIR$/../../../K-Android 001/Desktop/Hackaton/gambling_hackaton/GamblingHackaton.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\K-Android 001\Desktop\Hackaton\gambling_hackaton\app\app.iml" filepath="C:\Users\K-Android 001\Desktop\Hackaton\gambling_hackaton\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../K-Android 001/Desktop/Hackaton/gambling_hackaton/app/app.iml" filepath="$PROJECT_DIR$/../../../K-Android 001/Desktop/Hackaton/gambling_hackaton/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/gambling_hackaton.iml" filepath="$PROJECT_DIR$/gambling_hackaton.iml" />
     </modules>
   </component>

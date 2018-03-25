@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 def final BUILDTOOLS_VER = '25.0.0'
 def final APPCOMPAT_VER = '25.3.1'
+def final BUTTERKNIFE_VER = '8.4.0'
 
 
 android {
@@ -29,6 +30,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile "com.android.support:appcompat-v7:${APPCOMPAT_VER}"
+
+    compile "com.jakewharton:butterknife:${BUTTERKNIFE_VER}"
+    annotationProcessor("com.jakewharton:butterknife-compiler:${BUTTERKNIFE_VER}")
 
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'

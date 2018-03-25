@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/abActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_gravity="center_vertical"
+        android:background="@color/colorPrimary"
+        android:elevation="2dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/abName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ab_name_marginleft_mainactivity"
+            android:layout_weight="1"
+            android:text="Roulette"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp20" />
+
+        <TextView
+            android:id="@+id/abCurBet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="@dimen/ab_name_marginleft_mainactivity"
+            android:text="Free spins: #1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp20" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="5dp">
+
+        <LinearLayout
+            android:id="@+id/llBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="18dp"
+            android:layout_marginTop="20dp"
+            android:elevation="10dp"
+            android:gravity="center"
+            android:minHeight="0dp"
+            android:minWidth="100dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_energy" />
+
+            <TextSwitcher
+                android:id="@+id/text_switcher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlContent"
+        android:layout_width="match_parent"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/rouletteView"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/spin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <app.gluten.free.gamblinghackaton.spinner.IndicatorView
+            android:id="@+id/indicatorView"
+            android:layout_width="@dimen/spin_border_d"
+            android:layout_height="@dimen/spin_border_d"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerInParent="true"/>
+
+        <Button
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/btnSpin"
+            android:layout_centerInParent="true"
+            android:background="@drawable/rounded_btn"
+            android:text="Spin"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/arrow"
+            android:layout_width="32dp"
+            android:layout_height="25dp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/btnBuy"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginTop="6dp"
+        tools:text="Install"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
