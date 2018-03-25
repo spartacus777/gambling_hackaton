@@ -10,8 +10,10 @@ public class User {
     final public static String      BALANCE = "BALANCE";
     final public static String      WINS = "WINS";
     final public static String      NOWINS = "NOWINS";
+    final public static String      DOLS = "DOLS";
 
 
+    public int dollars = 0;
     public int balanceSpins = 10;
 
     public int rouletteWinCount = 0;
@@ -25,6 +27,8 @@ public class User {
         storage.putInt(BALANCE, balanceSpins);
         storage.putInt(WINS, rouletteWinCount);
         storage.putInt(NOWINS, rouletteRollsNoWinsCount);
+        storage.putInt(DOLS, dollars);
+
         storage.apply();
     }
 
@@ -34,6 +38,7 @@ public class User {
         balanceSpins = storage.getInt(BALANCE, 2);
         rouletteWinCount = storage.getInt(BALANCE, 0);
         rouletteRollsNoWinsCount = storage.getInt(BALANCE, 0);
+        dollars = storage.getInt(DOLS, 0);
 
     }
 

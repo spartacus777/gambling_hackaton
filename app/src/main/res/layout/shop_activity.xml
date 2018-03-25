@@ -22,11 +22,14 @@
             android:layout_height="24dp"
             android:background="@drawable/ic_arrow_back_black_36dp"/>
 
-        <Button
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/settings"/>
+        <TextView
+            android:text="Shop"
+            android:textSize="20sp"
+            android:layout_toRightOf="@id/back"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </RelativeLayout>
 
@@ -58,6 +61,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Dollars spend"
+                android:textSize="20sp"
+                android:textColor="@color/white"/>
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginRight="1dp"
+                android:src="@drawable/coin" />
+
+            <TextSwitcher
+                android:id="@+id/dol_switcher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Balance"
                 android:textSize="20sp"
                 android:textColor="@color/white"/>
@@ -65,7 +87,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="1dp"
                 android:src="@drawable/ic_energy" />
 
             <TextSwitcher

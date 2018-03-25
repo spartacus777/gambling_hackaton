@@ -38,6 +38,8 @@ public class ShopActivity extends AppCompatActivity {
     protected TextSwitcher textSwitcher;
 
     MediaPlayer mpSound;
+    @BindView(R.id.dol_switcher)
+    protected TextSwitcher dol_switcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,10 +68,24 @@ public class ShopActivity extends AppCompatActivity {
         textSwitcher.setInAnimation(this, R.anim.text_in);
         textSwitcher.setOutAnimation(this, R.anim.text_out);
 
+        dol_switcher.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView () {
+                TextView tv = new TextView(ShopActivity.this);
+                tv.setTextColor(Color.WHITE);
+                tv.setMaxLines(1);
+                tv.setTextSize(20);
+                return tv;
+            }
+        });
+        dol_switcher.setInAnimation(this, R.anim.text_in);
+        dol_switcher.setOutAnimation(this, R.anim.text_out);
+
     }
 
     private void updateBalance(){
         textSwitcher.setText(""+App.getCurrentUser().balanceSpins);
+        dol_switcher.setText(""+App.getCurrentUser().dollars);
     }
 
     private void init(){
@@ -87,6 +103,8 @@ public class ShopActivity extends AppCompatActivity {
         products.add(createProd2());
         products.add(createProd3());
         products.add(createProd4());
+        products.add(createProd5());
+        products.add(createProd6());
 
         return products;
     }
@@ -99,6 +117,7 @@ public class ShopActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 App.getCurrentUser().increaseBalance(1);
+                App.getCurrentUser().dollars += 1;
                 App.setCurrentUser(App.getCurrentUser());
                 updateBalance();
             }
@@ -120,6 +139,7 @@ public class ShopActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 App.getCurrentUser().increaseBalance(5);
+                App.getCurrentUser().dollars += 4;
                 App.setCurrentUser(App.getCurrentUser());
                 updateBalance();
             }
@@ -136,6 +156,7 @@ public class ShopActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 App.getCurrentUser().increaseBalance(13);
+                App.getCurrentUser().dollars += 10;
                 App.setCurrentUser(App.getCurrentUser());
                 updateBalance();
             }
@@ -147,11 +168,49 @@ public class ShopActivity extends AppCompatActivity {
     private Product createProd4(){
         Product p1 = new Product();
         p1.title = "Random 1-5 spins";
-        p1.descr = "buy gift box for 2.5 dollar";
+        p1.descr = "buy gift box for 2 dollar";
+        p1.iconRes  = R.drawable.gift1;
         p1.listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 App.getCurrentUser().increaseBalance(new Random().nextInt(5) + 1);
+                App.getCurrentUser().dollars += 2;
+                App.setCurrentUser(App.getCurrentUser());
+                updateBalance();
+            }
+        };
+
+        return p1;
+    }
+
+    private Product createProd5(){
+        Product p1 = new Product();
+        p1.title = "Random 5 - 10 spins";
+        p1.descr = "buy gift box for 5 dollar";
+        p1.iconRes  = R.drawable.gift2;
+        p1.listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                App.getCurrentUser().increaseBalance(new Random().nextInt(5) + 5);
+                App.getCurrentUser().dollars += 5;
+                App.setCurrentUser(App.getCurrentUser());
+                updateBalance();
+            }
+        };
+
+        return p1;
+    }
+
+    private Product createProd6(){
+        Product p1 = new Product();
+        p1.title = "Random 10 - 15 spins";
+        p1.descr = "buy gift box for 7 dollar";
+        p1.iconRes  = R.drawable.gift3;
+        p1.listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                App.getCurrentUser().increaseBalance(new Random().nextInt(5) + 10);
+                App.getCurrentUser().dollars += 7;
                 App.setCurrentUser(App.getCurrentUser());
                 updateBalance();
             }
