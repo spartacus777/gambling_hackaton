@@ -12,6 +12,7 @@
 
     <ImageView
         android:id="@+id/ivIcon"
+        android:src="@drawable/flash"
         android:layout_width="40dp"
         android:layout_height="40dp" />
 
