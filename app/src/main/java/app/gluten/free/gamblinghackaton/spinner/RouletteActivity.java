@@ -1,6 +1,7 @@
 package app.gluten.free.gamblinghackaton.spinner;
 
 import android.animation.Animator;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,7 @@ import app.gluten.free.gamblinghackaton.App;
 import app.gluten.free.gamblinghackaton.BaseActivity;
 import app.gluten.free.gamblinghackaton.NoSpinDialogHelper;
 import app.gluten.free.gamblinghackaton.R;
+import app.gluten.free.gamblinghackaton.ShopActivity;
 import app.gluten.free.gamblinghackaton.helper.UIHelper;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -264,7 +266,8 @@ public class RouletteActivity extends BaseActivity implements IndicatorView.OnIn
 
     @Override
     public void onBuyClicked() {
-        //goto shop
+        Intent shop = new Intent(RouletteActivity.this, ShopActivity.class);
+        RouletteActivity.this.startActivity(shop);
     }
 }
 
