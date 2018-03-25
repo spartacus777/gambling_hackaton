@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent settings = new Intent(MainActivity.this, SettingsActivity.class);
+                MainActivity.this.startActivity(settings);
             }
         });
         btnSlot.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +41,15 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(slot);
             }
         });
+
+        btnShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent shop = new Intent(MainActivity.this, ShopActivity.class);
+                MainActivity.this.startActivity(shop);
+            }
+        });
+
         createNotification();
     }
 
