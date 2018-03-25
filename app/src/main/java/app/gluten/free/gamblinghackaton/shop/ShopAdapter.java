@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -51,6 +52,9 @@ public class ShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public class Holder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.ivIcon)
+        ImageView ivIcon;
+
         @BindView(R.id.tvTitle)
         TextView tvTitle;
 
@@ -69,6 +73,9 @@ public class ShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         public void bind(Product product){
             tvTitle.setText(product.title);
             tvDescr.setText(product.descr);
+            if (product.iconRes != 0) {
+                ivIcon.setImageResource(product.iconRes);
+            }
 
             btnBuy.setOnClickListener(product.listener);
         }

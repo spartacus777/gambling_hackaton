@@ -8,7 +8,7 @@ public class Product {
 
     public String descr;
 
-    public int amount;
+    public int iconRes;
 
     public int price;
 
