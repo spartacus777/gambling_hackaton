@@ -1,5 +1,7 @@
 package app.gluten.free.gamblinghackaton;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,9 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.TextSwitcher;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 import java.util.Random;
+
+import app.gluten.free.gamblinghackaton.spinner.RouletteActivity;
+import butterknife.BindView;
 
 /**
  * Created by K-Android 001 on 3/25/2018.
@@ -19,10 +27,11 @@ public class SlotActivity extends AppCompatActivity {
 
     private ImageView img1, img2, img3;
     private Wheel wheel1, wheel2, wheel3;
-    private Button btn, btnSound;
+    private Button btn, btnSound, btnShop;
     private boolean isStarted;
     MediaPlayer mpSound;
     private boolean isSoundOn=true;
+    protected TextSwitcher textSwitcher;
 
     public static final Random RANDOM = new Random();
 
@@ -40,6 +49,8 @@ public class SlotActivity extends AppCompatActivity {
         img3 = (ImageView) findViewById(R.id.img3);
         btn = (Button) findViewById(R.id.btn);
         btnSound = (Button) findViewById(R.id.btnSound);
+        btnShop = (Button) findViewById(R.id.btnShop);
+        textSwitcher = (TextSwitcher)findViewById(R.id.text_switcher);
 
         btnSound.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +68,14 @@ public class SlotActivity extends AppCompatActivity {
             }
         });
 
+        btnShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent shop = new Intent(SlotActivity.this, ShopActivity.class);
+                SlotActivity.this.startActivity(shop);
+            }
+        });
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,9 +86,13 @@ public class SlotActivity extends AppCompatActivity {
 
                     if (wheel1.currentIndex == wheel2.currentIndex && wheel2.currentIndex == wheel3.currentIndex) {
 //                        msg.setText("You win the big prize");
+                        App.getCurrentUser().increaseBalance(10);
+                        updateBalanceAndSpins(false);
                     } else if (wheel1.currentIndex == wheel2.currentIndex || wheel2.currentIndex == wheel3.currentIndex
                             || wheel1.currentIndex == wheel3.currentIndex) {
 //                        msg.setText("Little Prize");
+                        App.getCurrentUser().increaseBalance(2);
+                        updateBalanceAndSpins(false);
                     } else {
 //                        msg.setText("You lose");
                     }
@@ -79,54 +102,95 @@ public class SlotActivity extends AppCompatActivity {
 
                 } else {
 
-                    wheel1 = new Wheel(new Wheel.WheelListener() {
-                        @Override
-                        public void newImage(final int img) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    img1.setImageResource(img);
-                                }
-                            });
-                        }
-                    }, 200, randomLong(0, 200));
 
-                    wheel1.start();
+                    if (App.getCurrentUser().getBalance() > 0) {
+                        App.getCurrentUser().increaseBalance(-1);
+                        updateBalanceAndSpins(false);
 
-                    wheel2 = new Wheel(new Wheel.WheelListener() {
-                        @Override
-                        public void newImage(final int img) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    img2.setImageResource(img);
-                                }
-                            });
-                        }
-                    }, 200, randomLong(150, 400));
+                        wheel1 = new Wheel(new Wheel.WheelListener() {
+                            @Override
+                            public void newImage(final int img) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        img1.setImageResource(img);
+                                    }
+                                });
+                            }
+                        }, 200, randomLong(0, 200));
 
-                    wheel2.start();
+                        wheel1.start();
 
-                    wheel3 = new Wheel(new Wheel.WheelListener() {
-                        @Override
-                        public void newImage(final int img) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    img3.setImageResource(img);
-                                }
-                            });
-                        }
-                    }, 200, randomLong(150, 400));
+                        wheel2 = new Wheel(new Wheel.WheelListener() {
+                            @Override
+                            public void newImage(final int img) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        img2.setImageResource(img);
+                                    }
+                                });
+                            }
+                        }, 200, randomLong(150, 400));
 
-                    wheel3.start();
+                        wheel2.start();
 
-                    btn.setText("Stop");
+                        wheel3 = new Wheel(new Wheel.WheelListener() {
+                            @Override
+                            public void newImage(final int img) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        img3.setImageResource(img);
+                                    }
+                                });
+                            }
+                        }, 200, randomLong(150, 400));
+
+                        wheel3.start();
+
+                        btn.setText("Stop");
 //                    msg.setText("");
-                    isStarted = true;
+                        isStarted = true;
+                    }
+                    else{
+                        Toast.makeText(SlotActivity.this, "NO SPINS LEFT", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
+
+        initTextSwitcher();
+        updateBalanceAndSpins(true);
+    }
+
+    private void initTextSwitcher(){
+        textSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView () {
+                TextView tv = new TextView(SlotActivity.this);
+                tv.setTextColor(Color.WHITE);
+                tv.setMaxLines(1);
+                tv.setTextSize(20);
+                return tv;
+            }
+        });
+        textSwitcher.setInAnimation(this, R.anim.text_in);
+        textSwitcher.setOutAnimation(this, R.anim.text_out);
+
+    }
+
+    private void updateBalanceAndSpins(boolean fromInit){
+        int balance = App.getCurrentUser().getBalance();
+
+        if (((TextView) textSwitcher.getCurrentView()).getText() != null &&
+                !String.format("%d", balance).equalsIgnoreCase(((TextView) textSwitcher.getCurrentView()).getText().toString())) {
+
+            textSwitcher.setText("" + String.format("%d", balance) + " Spin");
+
+        } else {
+            textSwitcher.setText("" + String.format("%d", balance) + " Spin");
+        }
     }
 
 

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GamblingHackaton</string>
+    <string name="slot_explanation">Click start button to begin awards spinning, and stop button when you want to stop spinning. If you match all three
+    symbols you will get 10 spins, if you have two out of three symbols you will get 2 spins, and if every symbol is different you lost. Have fun and good luck! :)</string>
 </resources>

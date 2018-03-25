@@ -32,6 +32,18 @@
         <activity android:name=".ShopActivity">
         </activity>
 
+
+        <receiver
+            android:name="app.gluten.free.recievers.NotificationReciever"
+            android:enabled="true"
+            android:exported="false" >
+        </receiver>
+
+        <service
+            android:name="app.gluten.free.services.NotificationIntentService"
+            android:exported="false" >
+        </service>
+
     </application>
 
 

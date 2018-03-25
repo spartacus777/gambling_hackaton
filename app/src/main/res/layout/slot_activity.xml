@@ -21,9 +21,47 @@
 
     </RelativeLayout>
 
+    <FrameLayout
+        android:id="@+id/balanceLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="5dp">
+
+        <LinearLayout
+            android:id="@+id/llBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="18dp"
+            android:layout_marginTop="20dp"
+            android:elevation="10dp"
+            android:gravity="center"
+            android:minHeight="0dp"
+            android:minWidth="100dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_energy" />
+
+            <TextSwitcher
+                android:id="@+id/text_switcher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
     <LinearLayout
         android:id="@+id/imgs"
-        android:layout_below="@id/toolbar_slot"
+        android:layout_below="@id/balanceLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -33,14 +71,14 @@
             android:id="@+id/img1"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             android:src="@drawable/slot5"/>
 
         <ImageView
             android:id="@+id/img2"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:src="@drawable/slot5"/>
@@ -49,18 +87,45 @@
             android:id="@+id/img3"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             android:src="@drawable/slot5"/>
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/btnsLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Start"
-        android:layout_marginTop="50dp"
-        android:layout_below="@id/imgs"
-        android:layout_alignParentRight="true"
-        />
+        android:padding="20dp"
+        android:layout_below="@id/imgs">
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start"
+            android:background="@drawable/cool_btn"
+            android:textColor="@color/white"
+            android:layout_alignParentRight="true"
+            />
+
+        <Button
+            android:id="@+id/btnShop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cool_btn"
+            android:textColor="@color/white"
+            android:text="Shop"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txtExplanation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:textSize="16dp"
+        android:layout_below="@id/btnsLayout"
+        android:text="@string/slot_explanation"/>
 </RelativeLayout>
