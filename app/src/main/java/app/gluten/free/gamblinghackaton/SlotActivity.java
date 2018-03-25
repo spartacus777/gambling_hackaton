@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -99,6 +100,7 @@ public class SlotActivity extends AppCompatActivity {
 
                     btn.setText("Start");
                     isStarted = false;
+                    btnShop.setEnabled(true);
 
                 } else {
 
@@ -152,9 +154,25 @@ public class SlotActivity extends AppCompatActivity {
                         btn.setText("Stop");
 //                    msg.setText("");
                         isStarted = true;
+                        btnShop.setEnabled(false);
                     }
                     else{
-                        Toast.makeText(SlotActivity.this, "NO SPINS LEFT", Toast.LENGTH_SHORT).show();
+                        NoSpinDialogHelper.NoSpinClickListener listener = new NoSpinDialogHelper.NoSpinClickListener() {
+                            @Override
+                            public void onBuyClicked() {
+                                Intent shop = new Intent(SlotActivity.this, ShopActivity.class);
+                                SlotActivity.this.startActivity(shop);
+                            }
+                        };
+                        NoSpinDialogHelper.show(SlotActivity.this, listener);
+
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+
+                            }
+                        }, 2000);
                     }
                 }
             }

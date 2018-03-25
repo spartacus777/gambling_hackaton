@@ -25,6 +25,7 @@
         android:id="@+id/balanceLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_slot"
         android:background="@color/colorPrimary"
         android:elevation="5dp">
 
@@ -96,7 +97,8 @@
         android:id="@+id/btnsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:layout_below="@id/imgs">
 
         <Button
@@ -124,7 +126,7 @@
         android:id="@+id/txtExplanation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="25dp"
+        android:padding="20dp"
         android:textSize="16dp"
         android:layout_below="@id/btnsLayout"
         android:text="@string/slot_explanation"/>
