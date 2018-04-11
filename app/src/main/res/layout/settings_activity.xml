@@ -1,8 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/abActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_gravity="center_vertical"
+        android:background="@color/white"
+        android:elevation="2dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/ic_arrow_back_black_36dp"/>
+
+        <TextView
+            android:text="Settings"
+            android:textSize="20sp"
+            android:layout_toRightOf="@id/back"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
 
     <!--<RelativeLayout-->
         <!--android:id="@+id/toolbar_main"-->
@@ -20,6 +50,7 @@
 
     <RelativeLayout
         android:id="@+id/sound_layout"
+        android:layout_below="@id/abActionBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp">

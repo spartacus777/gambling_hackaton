@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -36,8 +37,9 @@
         <Button
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:visibility="gone"
             android:layout_alignParentRight="true"
-            android:background="@drawable/settings"/>
+            android:background="@drawable/ic_settings_black_36dp"/>
 
     </RelativeLayout>
 

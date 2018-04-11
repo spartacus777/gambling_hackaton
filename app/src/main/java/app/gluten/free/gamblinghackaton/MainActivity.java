@@ -17,14 +17,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.imangazaliev.circlemenu.CircleMenuButton;
+
 import app.gluten.free.gamblinghackaton.spinner.RouletteActivity;
 import app.gluten.free.recievers.NotificationReciever;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnRoulette, btnSlot, btnShop, btnSettings;
-    MediaPlayer mpSound;
-
+    private Button btnSettings;
+    private MediaPlayer mpSound;
     private ViewGroup parent;
 
     @Override
@@ -32,42 +33,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
-        btnRoulette = (Button)findViewById(R.id.btnRoulette);
-        btnSlot = (Button)findViewById(R.id.btnSlot);
-        btnShop = (Button)findViewById(R.id.btnShop);
         btnSettings = (Button)findViewById(R.id.btnSettings);
         parent = (ViewGroup) findViewById(R.id.parent);
 
-        btnSettings.setOnClickListener(new View.OnClickListener() {
+        com.imangazaliev.circlemenu.CircleMenu circleMenu = (com.imangazaliev.circlemenu.CircleMenu) findViewById(R.id.circleMenu);
+        circleMenu.setOnItemClickListener(new com.imangazaliev.circlemenu.CircleMenu.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent settings = new Intent(MainActivity.this, SettingsActivity.class);
-                MainActivity.this.startActivity(settings);
-            }
-        });
-        btnSlot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent slot = new Intent(MainActivity.this, SlotActivity.class);
-                MainActivity.this.startActivity(slot);
-            }
-        });
+            public void onItemClick(CircleMenuButton menuButton) {
+                switch (menuButton.getId()){
+                    case R.id.btnRoulette:
+                        Intent slot1 = new Intent(MainActivity.this, RouletteActivity.class);
+                        MainActivity.this.startActivity(slot1);
+                        break;
 
-        btnShop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent shop = new Intent(MainActivity.this, ShopActivity.class);
-                MainActivity.this.startActivity(shop);
+                    case R.id.btnSlot:
+                        Intent slot = new Intent(MainActivity.this, SlotActivity.class);
+                        MainActivity.this.startActivity(slot);
+                        break;
+
+                    case R.id.btnShop:
+                        Intent shop = new Intent(MainActivity.this, ShopActivity.class);
+                        MainActivity.this.startActivity(shop);
+                        break;
+                }
             }
         });
 
         createNotification();
 
-        btnRoulette.setOnClickListener(new View.OnClickListener() {
+        btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent slot = new Intent(MainActivity.this, RouletteActivity.class);
-                MainActivity.this.startActivity(slot);
+                Intent settings = new Intent(MainActivity.this, SettingsActivity.class);
+                MainActivity.this.startActivity(settings);
+
             }
         });
 
@@ -85,6 +84,11 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager alarmManager = (AlarmManager) MainActivity.this.getSystemService(Context.ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),
                 1000 * 60 * 60 * 2, pendingIntent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override

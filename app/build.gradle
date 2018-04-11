@@ -7,12 +7,12 @@ def final RECYCLER_VIEW_VER = APPCOMPAT_VER
 
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion BUILDTOOLS_VER
     defaultConfig {
-        applicationId "app.gluten.free.gamblinghackaton"
+        applicationId "cool.gambling"
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -30,6 +30,9 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+//    compile 'com.ramotion.circlemenu:circle-menu:0.3.1'
+    compile 'com.github.imangazalievm:circlemenu:2.0.1'
+
     compile "com.android.support:appcompat-v7:${APPCOMPAT_VER}"
 
     compile "com.android.support:recyclerview-v7:${RECYCLER_VIEW_VER}"

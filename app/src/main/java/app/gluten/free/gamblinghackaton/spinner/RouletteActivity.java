@@ -4,15 +4,18 @@ import android.animation.Animator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
@@ -51,6 +54,9 @@ public class RouletteActivity extends BaseActivity implements IndicatorView.OnIn
 
     @BindView(R.id.text_switcher)
     protected TextSwitcher textSwitcher;
+
+    @BindView(R.id.parent)
+    protected LinearLayout parent;
 
     private SpinLogic spinLogic;
 
@@ -95,6 +101,12 @@ public class RouletteActivity extends BaseActivity implements IndicatorView.OnIn
         spinLogic = new SpinLogic();
 
         indicatorView.setOnInterectionListener(this);
+
+        GradientDrawable gd = new GradientDrawable(
+                GradientDrawable.Orientation.TOP_BOTTOM,
+                new int[] {Color.parseColor("#ED66FF"), Color.parseColor("#717BFF")});
+        gd.setCornerRadius(0f);
+        parent.setBackground(gd);
 
         rlContent.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
             @Override

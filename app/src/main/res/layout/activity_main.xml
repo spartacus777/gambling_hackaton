@@ -16,35 +16,51 @@
 
         <Button
             android:id="@+id/btnSettings"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
-            android:background="@drawable/settings"/>
+            android:background="@drawable/ic_settings_black_36dp"/>
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/btnSlot"
+    <com.imangazaliev.circlemenu.CircleMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar_main"
-        android:layout_centerHorizontal="true"
-        android:text="Slot"/>
+        android:layout_centerInParent="true"
+        app:openOnStart="true"
+        app:hintsEnabled="true"
+        android:id="@+id/circleMenu">
 
-    <Button
-        android:id="@+id/btnRoulette"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnSlot"
-        android:layout_centerHorizontal="true"
-        android:text="Roulette"/>
+        <com.imangazaliev.circlemenu.CircleMenuButton
+            android:id="@+id/btnSlot"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerInside"
+            app:colorNormal="#2196F3"
+            app:colorPressed="#1E88E5"
+            app:hintText="Slot"
+            app:icon="@drawable/slot"/>
 
-    <Button
-        android:id="@+id/btnShop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnRoulette"
-        android:layout_centerHorizontal="true"
-        android:text="Shop"/>
+        <com.imangazaliev.circlemenu.CircleMenuButton
+            android:id="@+id/btnRoulette"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:colorNormal="#4CAF50"
+            app:colorPressed="#43A047"
+            android:scaleType="centerInside"
+            app:hintText="Roulette"
+            app:icon="@drawable/gambling"/>
+
+        <com.imangazaliev.circlemenu.CircleMenuButton
+            android:id="@+id/btnShop"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerInside"
+            app:colorNormal="#F44336"
+            app:colorPressed="#E53935"
+            app:hintText="Shop"
+            app:icon="@drawable/onlinestore"/>
+
+    </com.imangazaliev.circlemenu.CircleMenu>
 
 </RelativeLayout>

@@ -27,7 +27,7 @@ public class NotificationIntentService extends IntentService {
         builder.setAutoCancel(true);
         builder.setContentTitle(getResources().getString(R.string.app_name));
         builder.setContentText("Congratulations! You have won a free spin!");
-        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setSmallIcon(R.drawable.gambling);
         Intent notifyIntent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 2, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         //to be able to launch your activity from the notification

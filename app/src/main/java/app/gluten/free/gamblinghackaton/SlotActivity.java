@@ -3,6 +3,7 @@ package app.gluten.free.gamblinghackaton;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
@@ -57,6 +59,13 @@ public class SlotActivity extends AppCompatActivity {
         btnShop = (Button) findViewById(R.id.btnShop);
         btnBack = (ImageView) findViewById(R.id.back);
         textSwitcher = (TextSwitcher)findViewById(R.id.text_switcher);
+        ViewGroup activity_main = (ViewGroup) findViewById(R.id.activity_main);
+
+        GradientDrawable gd = new GradientDrawable(
+                GradientDrawable.Orientation.TOP_BOTTOM,
+                new int[] {Color.parseColor("#ED66FF"), Color.parseColor("#717BFF")});
+        gd.setCornerRadius(0f);
+        activity_main.setBackground(gd);
 
         final SharedPreferences storage = PreferenceManager.getDefaultSharedPreferences(App.getContext());
         if(storage.getBoolean("isSoundOn", true))
