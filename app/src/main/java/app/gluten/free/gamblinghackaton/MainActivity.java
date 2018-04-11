@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 (MainActivity.this, 3, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) MainActivity.this.getSystemService(Context.ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),
-                1000 * 60 * 60 * 1, pendingIntent);
+                1000 * 60 * 60 * 2, pendingIntent);
     }
 
     @Override
